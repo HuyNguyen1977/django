@@ -96,7 +96,7 @@ def room(request, pk):
         print((participantsUser))
     #end Get thanh vien tham gia   
     # print(vars(participants))
-    if request.user.username not in participantsUser :
+    if request.user.username not in participantsUser and request.user.username != room.host.username :
         print("ton tai")
         context = { 'message':'Bạn không có quyền trong phòng này','permit':'notpermit'}
         return render(request, 'base/room.html', context)
@@ -112,7 +112,7 @@ def room(request, pk):
         return redirect('room', pk=room.id)
 
     context = {'room': room, 'room_messages': room_messages,
-               'participants': participants, 'message':"Bạn không có quyền trong phòng này",'permit':"notpermit"}
+               'participants': participants, 'message':"Bạn không có quyền trong phòng này",'permit':"permit"}
     return render(request, 'base/room.html', context)
 
 
