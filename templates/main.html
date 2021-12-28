@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/toastr.min.css' %}" />
+    <script src="{% static 'js/toastr.min.js' %}"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     {{ form.media }}
     <title>Đấu giá - Auction</title>
 </head>
@@ -31,6 +34,7 @@
 
     <script src="{% static 'js/script.js' %}"></script>
     <!-- <script>tinymce.init({selector:'textarea'});</script> -->
+    <script type=text/javascript>toastr.info('Are you the 6 fingered man?')</script>
 
 </body>
 
