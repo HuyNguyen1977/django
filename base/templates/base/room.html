@@ -3,8 +3,8 @@
 {% block content %}
 <main class="profile-page layout layout--2">
   <div class="container">
-    {% if permit  != "notpermit" %}
-     <!-- Room Start -->
+
+    <!-- Room Start -->
     <div class="room">
       <div class="room__top">
         <div class="room__topLeft">
@@ -140,8 +140,8 @@
       </div>
     </div>
     <!--  End -->
-    {% endif %}
-    {% if permit == "notpermit" %}
+    
+    <!-- {% if permit == "notpermit" %}
     <div class="room">
      
       <div class="room__topLeft">
@@ -159,7 +159,7 @@
     <div class="participants">
       <h3 class="participants__top">Thành viên </h3>
     </div>
-   {% endif %}
+   {% endif %} -->
   </div>
 </main>
 <script src="script.js"></script>

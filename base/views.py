@@ -97,9 +97,10 @@ def room(request, pk):
     #end Get thanh vien tham gia   
     # print(vars(participants))
     if request.user.username not in participantsUser and request.user.username != room.host.username :
-        print("ton tai")
-        context = { 'message':'Bạn không có quyền trong phòng này','permit':'notpermit'}
-        return render(request, 'base/room.html', context)
+        # print("ton tai")
+        # context = { 'message':'Bạn không có quyền trong phòng này','permit':'notpermit'}
+        messages.warning(request, 'Bạn không có quyền tham gia')
+        return redirect('home')
     # print(request.user.username)
     # print(vars(room.host))
     if request.method == 'POST':
