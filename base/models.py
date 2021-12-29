@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from tinymce.models import HTMLField 
+from django.template.defaultfilters import slugify
+import uuid
 
 
 class User(AbstractUser):
@@ -24,13 +26,17 @@ class Topic(models.Model):
 class Room(models.Model):
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
+    slug = models.SlugField(null=False, unique=True, default=uuid.uuid1)
     name = models.CharField(max_length=200)
     description = HTMLField(null=True, blank=True)
     participants = models.ManyToManyField(
         User, related_name='participants', blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-
+    def save(self, *args, **kwargs): # new
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
     class Meta:
         ordering = ['-updated', '-created']
 
