@@ -26,7 +26,7 @@ class Topic(models.Model):
 class Room(models.Model):
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
-    slug = models.SlugField(null=False, unique=True, default=uuid.uuid1)
+    slug = models.SlugField(null=False, default=uuid.uuid1)
     name = models.CharField(max_length=200)
     description = HTMLField(null=True, blank=True)
     participants = models.ManyToManyField(
