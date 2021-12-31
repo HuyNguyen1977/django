@@ -166,6 +166,18 @@
     </div>
    {% endif %} -->
   </div>
+  <script>
+
+    function createItem() {
+      localStorage.setItem("mytime", Date.now());
+    }
+    
+    function readValue() {
+      var x = localStorage.getItem("mytime");
+      document.getElementById("demo").innerHTML = x;
+    }
+    
+    </script>
 </main>
 <script src="script.js"></script>
 {% endblock content %}
