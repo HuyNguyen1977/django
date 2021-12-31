@@ -16,7 +16,7 @@
               </path>
             </svg>
           </a>
-          <h3>Phòng đấu giá</h3>
+          <h3>News feed</h3>
         </div>
         {% if room.host == request.user %}
         <div class="room__topRight">
@@ -72,8 +72,11 @@
             corporis laboriosam deleniti molestias?
           </div> -->
           <span class="room__topics">{{room.topic}}</span>
+          
         </div>
-
+        <div >
+            {{room.description|safe}}
+           </div>
         <div class="room__conversation">
           <div class="threads scroll">
 
@@ -113,12 +116,14 @@
         </div>
 
       </div>
-      <div class="room__message">
-        <form action="" method="POST">
-          {% csrf_token %}
-          <input name="body" placeholder="Write your message here..." />
-        </form>
-      </div>
+      {% if request.user.is_authenticated %}
+        <div class="room__message">
+          <form action="" method="POST">
+            {% csrf_token %}
+            <input name="body" placeholder="Write your message here..." />
+          </form>
+        </div>
+      {% endif %}  
     </div>
     <!-- Room End -->
 
