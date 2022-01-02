@@ -6,7 +6,6 @@ from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 from .models import Room, Topic, Message, User
 from .forms import RoomForm, UserForm, MyUserCreationForm
-from datetime import date
 # import json
 
 # Create your views here.
@@ -91,7 +90,7 @@ def room(request, pk):
     room_messages = room.message_set.all()
     participants = room.participants.all()
     # participantsUser=[]
-    # Get thanh vien tham gia
+    # # Get thanh vien tham gia
     # for userPa in participants:
     #     participantsUser.append(userPa.username)
     #     print((participantsUser))
@@ -103,10 +102,8 @@ def room(request, pk):
     #     messages.warning(request, 'Bạn không có quyền tham gia')
     #     return redirect('home')
     # print(request.user.username)
-    # print(vars(room))
-    print("aaaaaaaaaaaaaa ")
-    print(date.today().month)
-    if request.method == 'POST' and request.user.is_authenticated:
+    # print(vars(room.host))
+    if request.method == 'POST':
         message = Message.objects.create(
             user=request.user,
             room=room,
