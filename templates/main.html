@@ -9,13 +9,14 @@
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
     <link rel="stylesheet" href="{% static 'styles/toastr.min.css' %}" />
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="{% static 'js/toastr.min.js' %}"></script>
         
     <!-- <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
     
     {{ form.media }}
-    <title>Blog og Saigon</title>
+    <title>Blog of Saigon</title>
 </head>
 
 <body>
@@ -200,7 +201,13 @@
             });
         })
     </script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/infinite.min.js' %}"></script>
+    <!-- <script>
+        var infinite = new Waypoint.Infinite({
 
+        })
+    </script> -->
 </body>
 
 </html>

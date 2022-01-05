@@ -67,3 +67,181 @@ if (photoInput)
 // Scroll to Bottom
 const conversationThread = document.querySelector(".room__box");
 if (conversationThread) conversationThread.scrollTop = conversationThread.scrollHeight;
+
+
+//get the data stored in the localStorage for display on load
+function getLists() {
+  if(localStorage.getItem("feedroom") === null){
+    alert("Your dashboard is currently empty. Use the add button to add new products.");
+    document.getElementById("search").disabled = true;
+  } else {
+    //document.getElementById("search").disabled = false;
+    let feedrooms = JSON.parse(localStorage.getItem("feedroom"));
+    console.log(feedrooms);
+   // let productDisplay = document.getElementById('productDisplay');
+    //Display result
+    // productDisplay.innerHTML = '';
+    // for (let i = 0; i < productList.length; i++){
+    //   let id = productList[i].id;
+    //   let name = productList[i].name;
+    //   let category = productList[i].category;
+    //   let description = productList[i].description;
+
+    //   productDisplay.innerHTML += '<li class="list-group-item"><strong>'+name+'</strong><p>'+category+'</p><p>'+description+'</p><p><a' +
+    //       ' href="#" onclick="editProduct(\''+id+'\')" data-toggle="modal" data-target="#addNewProductModal">' +
+    //       '<i class="fa fa-edit green-text darken-2 "></i>&nbsp;Edit</a> &nbsp;&nbsp; ' +
+    //       '<a href="#" id="deleteId" onclick="deleteProduct(\''+id+'\')"><i class="fa fa-trash' +
+    //       ' red-text' +
+    //       ' darken-2"></i>&nbsp;' +
+    //       ' Delete</a>' +
+    //       ' </p>' +
+    //       '</li>';
+    //   }
+    }
+  }
+
+
+// deleting the main bookmark.
+function deleteProduct(id) {
+  let productList = JSON.parse(localStorage.getItem("productList"));
+  for(let i = 0; i < productList.length; i++){
+    if (productList[i].id === id) {
+      productList.splice(i,1);
+      //console.log(result);
+    }
+  }
+  localStorage.setItem("productList", JSON.stringify(productList)); //reset the values in the local storage
+  getProductLists(); // to quickly display what is remaining from local storage.
+}
+
+// Editing a product
+function editProduct(id) {
+  "use strict";
+  document.getElementById('modalSubmit').style.display = "none";
+  document.getElementById("addNewProductModalLabel").textContent = "Edit Product";
+
+  let tempId = id;
+  let parentDiv = document.getElementById('modalFooter');
+  let productList = JSON.parse(localStorage.getItem("productList"));
+
+
+  if (parentDiv.contains(document.getElementById("editButton"))) {
+    document.getElementById('editButton').disabled = false;
+  } else {
+    let editButton = document.createElement('button');
+    editButton.id = "editButton";
+    editButton.className = "fa fa-hdd-o btn btn-outline-primary btn-sm m-2";
+    editButton.textContent = " Save data";
+    parentDiv.appendChild(editButton);
+  }
+  for (let i = 0; i < productList.length; i++) {
+    if (productList[i].id === id) {
+      document.getElementById("productName").value = productList[i].name;
+      document.getElementById("productDescription").value = productList[i].description;
+      document.getElementById("productCategory").value = productList[i].category;
+    }
+  }
+
+  document.getElementById("editButton").addEventListener("click", function () {
+    addProduct();
+    let productList = JSON.parse(localStorage.getItem("productList"));
+    for(let i = 0; i < productList.length; i++){
+      if(productList[i].id === tempId){
+        productList.splice(i,1);
+      }
+    }
+    localStorage.setItem("productList", JSON.stringify(productList));
+    getProductLists();
+    resetForm();
+    document.getElementById("editButton").style.display = "none";
+
+    $(".addNewProduct").on('click',productFormReset());
+
+  });
+
+}
+
+function resetForm() {
+  document.getElementById("productName").value = "";
+  document.getElementById("productDescription").value = "";
+  document.getElementById("productCategory").value = "";
+}
+
+function productFormReset() {
+  document.getElementById('modalSubmit').style.display = "block";
+  document.getElementById("addNewProductModalLabel").textContent = "New Product Form";
+  document.getElementById('editButton').style.display = "none";
+}
+
+function addFeeds() {
+  let tempId = "{{room.id}}";
+  let nameFeeds = '{{room.name}}';
+  // let productDescription = document.getElementById('productDescription').value;
+  // let productCategory = document.getElementById('productCategory').value;
+  // Set time khi chưa có add
+  var now = new Date();
+  var today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() ));
+  //debugger;
+  if (localStorage.getItem("timeFeed") === null || localStorage.getItem("timeFeed") === [] || localStorage.getItem("timeFeed") === undefined) {
+    // var now = new Date();
+    // var today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() ));
+    //Add time Feed
+    let timeFeeds = {
+      time: today,
+    };
+    let timeFeed = [];
+    timeFeed.push(timeFeeds);
+    localStorage.setItem("timeFeed", JSON.stringify(timeFeed));
+  }
+  let userEntered = JSON.parse(localStorage.getItem("timeFeed"));
+  
+  // console.log(Date.parse(userEntered[0].time));
+  // //console.log(Date.parse(userEntered.time));
+  // console.log(Date.parse(today));
+  userEnteredNum = Date.parse(userEntered[0].time);
+  todayNum = Date.parse(today);
+  if( userEnteredNum < todayNum ){
+    localStorage.removeItem("feedroom");
+    //Add time Feed
+    let timeFeeds = {
+      time: today,
+    };
+    let timeFeed = [];
+    timeFeed.push(timeFeeds);
+    localStorage.setItem("timeFeed", JSON.stringify(timeFeed));
+  }
+ // const productId = productTempId + productName + randomNumberID(); //Used to give each product a unique id
+  if (nameFeeds !== '') {
+    let newProduct = {
+      id: tempId,
+      name: nameFeeds.toUpperCase(),
+      // category: productCategory,
+      // description: productDescription
+    };
+    if (localStorage.getItem("feedroom") === null || localStorage.getItem("feedroom") === [] || localStorage.getItem("feedroom") === undefined) {
+      let feedrooms = [];
+      feedrooms.push(newProduct);
+      localStorage.setItem("feedroom", JSON.stringify(feedrooms));
+    } else {
+      let feedrooms = JSON.parse(localStorage.getItem("feedroom"));
+      
+      console.log("aaaaaaa")
+      console.log(today);
+      let compare = 0;
+      if(feedrooms.length<3){
+        for(let i=0; i<feedrooms.length; i++){
+          if(feedrooms[i].id != '{{room.id}}'){
+            compare++;
+          }
+        }
+        if(compare == feedrooms.length){
+          feedrooms.push(newProduct);
+          //console.log("aaaaaaaaaaaa")
+          localStorage.setItem("feedroom", JSON.stringify(feedrooms));
+        }
+      }else{
+        location.replace("/?mess=Bạn đã xem hết giới hạn 1 ngày, bạn nên đăng nhập để được tiếp tục tham gia&limit=1")
+      }  
+    }
+  }
+}
