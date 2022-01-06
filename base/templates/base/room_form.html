@@ -14,7 +14,7 @@
               </path>
             </svg>
           </a>
-          <h3>Create/Update Study Room</h3>
+          <h3>Tạo/Sửa bài viết</h3>
         </div>
       </div>
       <div class="layout__body">
@@ -22,25 +22,26 @@
           {% csrf_token %}
 
           <div class="form__group">
-            <label for="room_topic">Enter a Topic</label>
-            <input required type="text" value="{{room.topic.name}}" name="topic" list="topic-list" />
-            <datalist id="topic-list">
-              <select id="room_topic">
+            <!-- <label for="room_topic">Enter a Topic</label> -->
+            <label for="room_topic">Topic</label>
+            <!-- <input required type="text" value="{{room.topic.name}}" name="topic" list="topic-list" /> -->
+            <!-- <datalist id="topic-list"> -->
+              <select id="room_topic" name="topic">
                 {% for topic in topics %}
                 <option value="{{topic.name}}">{{topic.name}}</option>
                 {% endfor %}
               </select>
-            </datalist>
+            <!-- </datalist> -->
           </div>
 
 
           <div class="form__group">
-            <label for="room_name">Room Name</label>
+            <label for="room_name">Tên bài viết</label>
             {{form.name}}
           </div>
 
           <div class="form__group">
-            <label for="room_description">Room Description</label>
+            <label for="room_description">Nội dung</label>
             {{form.description}}
           </div>
 
