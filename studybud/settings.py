@@ -152,8 +152,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
-    'selector': 'textarea',
+    'selector': 'textarea#local-upload',
+    'images_upload_url': '/upload_image/', # Image upload address in Django route
     'theme': 'silver',
+    'height': '500px',
     'plugins': '''
             textcolor save link image media preview codesample contextmenu
             table code lists fullscreen  insertdatetime  nonbreaking
@@ -165,12 +167,11 @@ TINYMCE_DEFAULT_CONFIG = {
             fullscreen preview bold italic underline | fontselect,
             fontsizeselect  | forecolor backcolor | alignleft alignright |
             aligncenter alignjustify | indent outdent | bullist numlist table |
-            | link image media | codesample |
-            ''',
-    'toolbar2': '''
-            visualblocks visualchars |
-            charmap hr pagebreak nonbreaking anchor |  code |
-            ''',
+            | link image media | code sample''',
+    # 'toolbar2': '''
+    #         visualblocks visualchars |
+    #         charmap hr pagebreak nonbreaking anchor |  code |
+    #         ''',
     'contextmenu': 'formats | link image',
     'menubar': True,
     'statusbar': True,

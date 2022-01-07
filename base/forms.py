@@ -16,7 +16,7 @@ class MyUserCreationForm(UserCreationForm):
 
 
 class RoomForm(ModelForm):
-    description = forms.CharField(widget=TinyMCE(attrs={'cols': 40, 'rows': 20}))
+    description = forms.CharField(widget=TinyMCE(attrs={'cols': 40, 'rows': 20, 'id':'local-upload'}))
     class Meta:
         model = Room
         fields = '__all__'
