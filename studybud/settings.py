@@ -43,6 +43,11 @@ INSTALLED_APPS = [
     'rest_framework',
     "corsheaders",
     "tinymce",
+    # 'filer',
+    # 'django-meta',
+    
+    # 'easy_thumbnails',
+    # 'djangocms_page_meta',
 ]
 
 AUTH_USER_MODEL = 'base.User'
@@ -152,7 +157,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
-    'selector': 'textarea#local-upload',
+    'selector': 'textarea',
+    # 'selector': 'textarea#local-upload',
     'images_upload_url': '/upload_image/', # Image upload address in Django route
     'theme': 'silver',
     'height': '500px',

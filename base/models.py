@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from tinymce.models import HTMLField 
 from django.template.defaultfilters import slugify
 import uuid
+# from meta.models import ModelMeta
 
 
 class User(AbstractUser):
