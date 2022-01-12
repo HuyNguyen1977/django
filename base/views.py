@@ -259,6 +259,7 @@ def upload_image(request):
         file_path = os.path.join(path, file_obj.name)
 
         file_url = f'{settings.MEDIA_URL}tinymce/{upload_time.year}/{upload_time.month}/{upload_time.day}/{file_obj.name}'
+        print((file_url))
 
         if os.path.exists(file_path):
             return JsonResponse({
