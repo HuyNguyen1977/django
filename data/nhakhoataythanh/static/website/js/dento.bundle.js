@@ -269,7 +269,7 @@ $(function () {
     $.fn.barfiller = function (options) {
 
         var defaults = $.extend({
-            barColor: '#16b597',
+            printColor: '#226b02',
             tooltip: true,
             duration: 1000,
             animateOnResize: true,
@@ -315,8 +315,8 @@ $(function () {
             *******************************/
 
             appendHTML: function() {
-                fill.css('background', settings.barColor);
-
+                fill.css('background', settings.printColor);
+//debugger;
                 if(!settings.tooltip) {
                     toolTip.css('display', 'none');
                 }

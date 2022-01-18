@@ -136,100 +136,37 @@
   {% endblock %}
 
   <!-- ***** Footer Area Start ***** -->
-  <footer class="footer-area bg-img bg-gradient-overlay" style="background-image: url({%static 'website/img/bg-img/3.jpg' %});">
+  <footer>
     <div class="container">
       <div class="row">
-        <!-- Single Footer Widget -->
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="single-footer-widget">
-            <a href="{% url 'home' %}" class="d-block mb-4"><img src="{% static 'website/img/core-img/logo.png' %}" alt=""></a>
-            <p>Etiam sutor risus, dapibus act elefend katen, lacinia sitamet denim. Mauris sagittis kansa interdum dignissim.</p>
-            <div class="footer-contact">
-              <p><i class="icon_pin"></i> 28 Jackson Street, Chicago, 7788569 USA</p>
-              <p><i class="icon_phone"></i> +84. 2252. 2250. 122</p>
-              <p><i class="icon_mail"></i> info.dento@gmail.com</p>
-            </div>
+        <div class="col-md-6 col-sm-6">
+          <div class="widget">
+            <h5 class="widgetheading">Liên hệ</h5>
+            <address>
+              <strong>Nha Khoa Tây Thạnh</strong> 138 Tây Thạnh, Phường Tây Thạnh, Quận Tân Phú, TP.HCM</address>
+            <p>
+              <i class="icon-phone"></i>Điện thoại: (028) 6685 2846 <br>
+              <i class="icon-phone"></i>Điện thoại di động: 0969 949 928<br>
+            </p>
           </div>
         </div>
-
-        <!-- Single Footer Widget -->
-        <div class="col-12 col-sm-6 col-lg">
-          <div class="single-footer-widget">
-            <!-- Widget Title -->
-            <h5 class="widget-title">Opening Hours</h5>
-
-            <!-- Opening Hours -->
-            <ul class="opening-hours">
-              <li><span>Mon-Wed</span> <span>8.00-18.00</span></li>
-              <li><span>Thu-Fri</span> <span>8.00-17.00</span></li>
-              <li><span>Sat</span> <span>9.00-17.00</span></li>
-              <li><span>Sun</span> <span>10.00-17.00</span></li>
-              <li><span>Holiday</span> <span>Closed</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Single Footer Widget -->
-        <div class="col-12 col-sm-6 col-lg">
-          <div class="single-footer-widget">
-            <!-- Widget Title -->
-            <h5 class="widget-title">Quick Link</h5>
-
-            <!-- Quick Links Nav -->
-            <nav>
-              <ul class="quick-links">
-                <li><a href="#">About</a></li>
-                <li><a href="#">FAQs</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Policy</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Advisors</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Dentist</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Legals</a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-
-        <!-- Single Footer Widget -->
-        <div class="col-12 col-sm-6 col-lg">
-          <div class="single-footer-widget">
-            <!-- Widget Title -->
-            <h5 class="widget-title">Newsletter</h5>
-
-            <p>We will send out weekly newest article and some great offers</p>
-            <!-- Newsletter Form -->
-            <div class="footer-newsletter-form">
-              <form action="#" method="post">
-                <input type="email" name="nl-email" value="" placeholder="Email Address">
-                <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-              </form>
-            </div>
-
-            <!-- Social Info -->
-            <div class="footer-social-info">
-              <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
-              <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
-              <a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a>
-              <a href="#" data-toggle="tooltip" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a>
-              <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-            </div>
-          </div>
+        <div class="col-md-6 col-sm-6">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.976901733888!2d106.62008421480115!3d10.813079392296675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752be72508cc1b%3A0x8730c2ef7e0d6d4d!2zMTM4IFTDonkgVGjhuqFuaCwgVMOibiBQaMO6LCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1sen!2s!4v1610796003157!5m2!1sen!2s" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    
         </div>
       </div>
     </div>
-
-    <!-- Copywrite Area -->
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="copywrite-content">
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+    <div id="sub-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="copyright">
+              <p>
+                <span>© Nha Khoa Tây Thạnh </span>
+              </p>
+            </div>
           </div>
+         
         </div>
       </div>
     </div>

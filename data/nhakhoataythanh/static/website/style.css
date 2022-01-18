@@ -58,7 +58,7 @@ Last Update: Dec 05, 2018
 @import url(css/owl.carousel.min.css);
 @import url(css/magnific-popup.css);
 @import url(css/font-awesome.min.css);
-@import url(css/style.css);
+/* @import url(css/style.css); */
 * {
   margin: 0;
   padding: 0; }
@@ -135,8 +135,8 @@ ul {
     left: 0;
     z-index: -1;
     background: #2c455d;
-    background: -webkit-linear-gradient(to right, #2c455d, #00012c);
-    background: linear-gradient(to right, #2c455d, #00012c);
+    background: -webkit-linear-gradient(to right, #34c43b, #027929);
+    background: linear-gradient(to right, #34c43b, #027929);
     opacity: 0.85; }
 
 .bg-img {
@@ -900,7 +900,7 @@ ul {
     position: relative;
     width: 0;
     height: 100%;
-    background: #333;
+    /* background: rgb(3, 134, 47); */
     z-index: 1; }
   .barfiller .tipWrap {
     display: none; }
