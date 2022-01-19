@@ -27,7 +27,7 @@ SECRET_KEY = 'z4vh%27+$w)dz^j7!9i)zxv$(k4^w1qwm+we91+_diqubn7(+0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dental-app-by-ptyadana.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -129,17 +129,25 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# to email address
-CONTACT_US_FORM_EMAIL_TO = os.environ.get('DJANGO_EMAIL_TESTING_ACCOUNT_NAME')
+# # to email address
+CONTACT_US_FORM_EMAIL_TO = "huynguyen@saigonbooks.vn"
 
 # Email settings
 # enable https://myaccount.google.com/lesssecureapps
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get('DJANGO_EMAIL_TESTING_ACCOUNT_NAME')
-EMAIL_HOST_PASSWORD = os.environ.get('DJANGO_EMAIL_TESTING_ACCOUNT_PASSWORD')
+# EMAIL_HOST_USER = os.environ.get('huynguyen@saigonbooks.vn')
+#EMAIL_HOST_PASSWORD = os.environ.get('huynguyen@saigonbooks.com.vn')
 EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com '
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+EMAIL_HOST_USER ='huynguyen@saigonbooks.vn'
+EMAIL_HOST_PASSWORD = 'huynguyen@saigonbooks.com.vn'
+CORS_ORIGIN_ALLOW_ALL=True
 
+# DEFAULT_FROM_EMAIL = 'testmail@gmail.com>'
 # Email settings (Local Testing)
 # python -m smtpd -n -c DebuggingServer localhost:1025
 # run above command from new command line interface - this will set up new server
