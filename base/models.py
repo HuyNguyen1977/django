@@ -27,11 +27,11 @@ class Topic(models.Model):
 class Room(models.Model):
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
-    slug = models.SlugField(null=False, default=uuid.uuid1)
+    # slug = models.SlugField(null=False, default=uuid.uuid1)
+    slug = models.SlugField(max_length=200, db_index=True, null=True, blank=True)
     name = models.CharField(max_length=200)
     description = HTMLField(null=True, blank=True)
-    participants = models.ManyToManyField(
-        User, related_name='participants', blank=True)
+    participants = models.ManyToManyField( User, related_name='participants', blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     def save(self, *args, **kwargs): # new
