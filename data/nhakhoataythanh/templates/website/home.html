@@ -332,31 +332,32 @@
         <div class="col-12">
           <!-- Appointment Form -->
           <div class="appointment-form">
-            <form action="#" method="post">
+            <form action="" method="post">
+              {% csrf_token %}
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group mb-30">
-                    <input type="text" name="your-name" class="form-control" placeholder="Your Name" required>
+                    <input type="text" name="home_name" class="form-control" placeholder="Your Name" required>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group mb-30">
-                    <input type="text" name="your-phone" class="form-control" placeholder="Your Phone" required>
+                    <input type="text" name="home_phone" class="form-control" placeholder="Your Phone" required>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group mb-30">
-                    <input type="email" name="your-email" class="form-control" placeholder="Your Email" required>
+                    <input type="email" name="home_email" class="form-control" placeholder="Your Email" required>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group mb-30">
-                    <input type="text" name="your-address" class="form-control" placeholder="Your Address">
+                    <input type="text" name="home_address" class="form-control" placeholder="Your Address">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group mb-30">
-                    <select name="your-scheldule" class="form-control">
+                    <select name="home_scheldule" class="form-control">
                       <option value="Choose Your Scheldule">Choose Your Scheldule</option>
                       <option value="9 AM to 10 AM">9 AM to 10 AM</option>
                       <option value="11 AM to 12 PM">11 AM to 12 PM</option>
@@ -367,7 +368,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group mb-30">
-                    <select name="your-time" class="form-control">
+                    <select name="home_time" class="form-control">
                       <option value="Choose Your Time">Choose Your Scheldule</option>
                       <option value="9 AM to 10 AM">9 AM to 10 AM</option>
                       <option value="11 AM to 12 PM">11 AM to 12 PM</option>
@@ -378,7 +379,7 @@
                 </div>
                 <div class="col-12">
                   <div class="form-group mb-30">
-                    <textarea name="your-message" class="form-control" placeholder="Your Message"></textarea>
+                    <textarea name="home_message" class="form-control" placeholder="Your Message"></textarea>
                   </div>
                 </div>
                 <div class="col-12 text-center">

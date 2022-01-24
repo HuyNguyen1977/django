@@ -3,6 +3,7 @@ envBub/
 envAuction/
 theme/
 data/nhakhoataythanh/envNhaKhoaTayThanh
+data/nhakhoataythanh/envNhaKhoaTayThanh/data
 # Node artifact files
 node_modules/
 dist/
