@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'website',
+    'website.apps.WebsiteConfig',
+
+    # 'website',
     
 ]
 
@@ -73,6 +75,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dental.wsgi.application'
 
+# AUTH_USER_MODEL = 'base.User'
+# AUTH_USER_MODEL = "website.User"
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
