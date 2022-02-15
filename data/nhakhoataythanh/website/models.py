@@ -1,4 +1,5 @@
 import email
+from email.mime import image
 from pickle import TRUE
 from pyexpat import model
 from unicodedata import name
@@ -73,6 +74,7 @@ class News(models.Model):
     # slug = models.SlugField(null=False, default=uuid.uuid1)
     slug = models.SlugField(max_length=200, db_index=True, null=True, blank=True)
     name = models.CharField(max_length=200)
+    image = models.FieldFile()
     # description = HTMLField(null=True, blank=True)
     description = models.TextField(null=True)
     # participants = models.ManyToManyField( User, related_name='participants', blank=True)
