@@ -74,7 +74,7 @@ class News(models.Model):
     # slug = models.SlugField(null=False, default=uuid.uuid1)
     slug = models.SlugField(max_length=200, db_index=True, null=True, blank=True)
     name = models.CharField(max_length=200)
-    image = models.FieldFile()
+    image = models.ImageField(null=True)
     # description = HTMLField(null=True, blank=True)
     description = models.TextField(null=True)
     # participants = models.ManyToManyField( User, related_name='participants', blank=True)
@@ -89,3 +89,8 @@ class News(models.Model):
 
     def __str__(self):
         return self.name
+
+class NewPhotos(models.Model):
+    id = models.AutoField(primary_key=True)
+    event = models.ForeignKey(News, on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to='news/')
