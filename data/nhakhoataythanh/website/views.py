@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail as sm
 from django.conf import settings as conf_settings
+
+from .models import News
 import socket
 
 
@@ -34,7 +36,10 @@ def home(request):
         messages.success(request, f'Hi {name}, Thanks for contacting us. We will follow up with you within next few business days.')
         return redirect('/')
     else:
-        return render(request, 'website/home.html')
+        news = News.objects.all()[0:3]
+        context = {'news': news}
+        print(vars(news[0]))
+        return render(request, 'website/home.html',context)
 
 def about(request):
     return render(request, 'website/about.html')

@@ -76,6 +76,7 @@ class News(models.Model):
     name = models.CharField(max_length=200)
     image = models.ImageField(null=True)
     # description = HTMLField(null=True, blank=True)
+    shortdes = models.TextField(null=True)
     description = models.TextField(null=True)
     # participants = models.ManyToManyField( User, related_name='participants', blank=True)
     updated = models.DateTimeField(auto_now=True)

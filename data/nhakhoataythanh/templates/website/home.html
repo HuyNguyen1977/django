@@ -402,6 +402,25 @@
       </div>
 
       <div class="row">
+        {% for newsDetail in news %}
+        <!-- Single Blog Item -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="single-blog-item mb-100">
+            <a href="{% url 'blog_details' %}">
+              <img src="{% static 'images/'%}{{ newsDetail.image }}" alt=""> {{ newsDetail.image }}
+            </a>
+            <!-- Blog Content -->
+            <div class="blog-content">
+              <a href="{% url 'blog_details' %}" class="post-title">{{newsDetail.name}}</a>
+              <p>{{newsDetail.shortdes|truncatewords:20}}</p>
+              <div class="post-meta">
+                <a href="#"><i class="icon_clock_alt"></i> 28 Sep 2018</a>
+                <a href="#"><i class="icon_chat_alt"></i> 3 Comments</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
         <!-- Single Blog Item -->
         <div class="col-12 col-md-6 col-lg-4">
           <div class="single-blog-item mb-100">
