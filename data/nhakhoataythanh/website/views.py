@@ -53,7 +53,7 @@ def pricing(request):
 def blog(request):
     return render(request, 'website/blog.html')
 
-def blog_details(request):
+def blog_details(request, pk):
     return render(request, 'website/blog_details.html')
 
 def contact(request):
