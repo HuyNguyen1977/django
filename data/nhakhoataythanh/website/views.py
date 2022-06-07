@@ -4,6 +4,7 @@ from django.core.mail import send_mail as sm
 from django.conf import settings as conf_settings
 
 from .models import News
+# from .models import Blogs
 import socket
 
 
@@ -53,8 +54,14 @@ def pricing(request):
 def blog(request):
     return render(request, 'website/blog.html')
 
-def blog_details(request, pk):
-    return render(request, 'website/blog_details.html')
+def blog_details(request, pk ):
+    
+    Allblog = News.objects.all() [0:5]
+    blog = News.objects.get(id=pk)
+    print(vars(blog))
+    context = {'blogs': blog, 'Allblogs': Allblog}
+    
+    return render(request, 'website/blog_details.html', context)
 
 def contact(request):
     if request.method == 'POST':
