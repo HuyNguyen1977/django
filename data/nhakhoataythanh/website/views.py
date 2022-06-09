@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.core.mail import send_mail as sm
 from django.conf import settings as conf_settings
 
-from .models import News
+from .models import News, Topic
 # from .models import Blogs
 import socket
 
@@ -37,8 +37,13 @@ def home(request):
         messages.success(request, f'Hi {name}, Thanks for contacting us. We will follow up with you within next few business days.')
         return redirect('/')
     else:
+        # news = News.objects.get(topic_id='1')[0:3]
+        # news = Topic.objects.select_related('news')
         news = News.objects.all()[0:3]
-        context = {'news': news}
+        blog = News.objects.get(slug='bang-gia-dieu-tri')
+        context = {'news': news, 'blogs': blog}
+        
+        # print(vars(blog))
         print(vars(news[0]))
         return render(request, 'website/home.html',context)
 
@@ -49,10 +54,15 @@ def service(request):
     return render(request, 'website/service.html')
 
 def pricing(request):
-    return render(request, 'website/pricing.html')
+    blog = News.objects.get(slug='bang-gia-dieu-tri')
+    context = {'blogs': blog}
+    return render(request, 'website/pricing.html', context)
 
 def blog(request):
-    return render(request, 'website/blog.html')
+    news = News.objects.all()[0:5]
+    # blog = News.objects.get(slug='bang-gia-dieu-tri')
+    context = {'news': news}
+    return render(request, 'website/blog.html', context)
 
 def blog_details(request, pk ):
     

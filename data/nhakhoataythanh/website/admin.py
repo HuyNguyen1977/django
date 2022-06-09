@@ -12,7 +12,8 @@ admin.site.register(Topic)
 
 class NewsAdmin(admin.ModelAdmin):
     class Media:
-        js = ("https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/tinymce.min.js","js/news.js",)
+        js = ("https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js","js/news.js",)
+        # https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/tinymce.min.js
 admin.site.register(News, NewsAdmin)
 
 class NewsFileAdmin(admin.StackedInline):
