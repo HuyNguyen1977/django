@@ -1,15 +1,16 @@
 from django.urls import path
-from .views import home,about,service,pricing,blog,blog_details,contact
+from . import views
+from .views import home,service,pricing,blog,blog_details,contact
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('', home, name='home'),
-    path('about', about, name='about'),
+    path('qa', views.qa, name='qa'),
     path('service', service, name='service'),
     path('pricing', pricing, name='pricing'),
-    path('blog', blog, name='blog'),
-    path('blogdetails/', blog_details, name='blog_details'),
+    # path('blog', blog, name='blog'),
+    path('blogdetails/', blog, name='blog'),
     path('blogdetails/<str:pk>/', blog_details, name='blog_details'),
     path('contact', contact, name='contact'),
 ]

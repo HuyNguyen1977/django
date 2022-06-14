@@ -74,7 +74,7 @@
                   <img src="{% static '/images/' %}{{ AllblogsDetaill.image }}" alt="">
                 </div>
                 <div class="blog-content">
-                  <a href="{% url 'blog_details' AllblogsDetaill.id %}" class="post-title">{{AllblogsDetaill.name}}</a>
+                  <a href="{% url 'blog_details' AllblogsDetaill.slug %}" class="post-title">{{AllblogsDetaill.name}}</a>
                   <span class="post-date">{{ AllblogsDetaill.created }}</span>
                 </div>
               </div>

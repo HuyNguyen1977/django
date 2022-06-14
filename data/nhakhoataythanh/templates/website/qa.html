@@ -8,7 +8,7 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center">
         <div class="col-12">
-          <h2 class="title">Bảng giá dich vụ</h2>
+          <h2 class="title">Câu hỏi thường gặp</h2>
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Bảng giá dich vụ</li>
+              <li class="breadcrumb-item active" aria-current="page">Câu hỏi thường gặp</li>
             </ol>
           </nav>
         </div>
@@ -29,15 +29,22 @@
   </div>
   <!-- ***** Breadcrumb Area End ***** -->
 
-  <!-- ***** Dento Pricing Table Area Start ***** -->
-  <section class="dento-pricing-table-area mt-50 section-padding-0-100">
+  <!-- ****** About Us Area Start ******* -->
+  <section class="dento-about-us-area mt-70">
     <div class="container">
-      <div class="row">
-        <div class="col-12">
-          {{ blogs.description|safe }}
+      <div class="row align-items-center">
+        <!-- About Us Thumbnail -->
+        <div class="col-12 col-md-6">
+
+          
         </div>
+        <!-- About Content -->
+        {% for new in news%}
+        {{new.description|safe}}
+        {% endfor %}
+         
       </div>
     </div>
   </section>
-  <!-- ***** Dento Pricing Table Area End ***** -->
+
 {% endblock %}

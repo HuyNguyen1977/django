@@ -38,17 +38,20 @@ def home(request):
         return redirect('/')
     else:
         # news = News.objects.get(topic_id='1')[0:3]
-        # news = Topic.objects.select_related('news')
-        news = News.objects.all()[0:3]
+        news = News.objects.select_related('topic').filter(topic__code__icontains='news')
+        # news = News.objects.raw('SELECT * FROM website_news')[0:3]
         blog = News.objects.get(slug='bang-gia-dieu-tri')
         context = {'news': news, 'blogs': blog}
         
         # print(vars(blog))
-        print(vars(news[0]))
+        # print(vars(news[0]))
         return render(request, 'website/home.html',context)
 
-def about(request):
-    return render(request, 'website/about.html')
+def qa(request):
+    news = News.objects.select_related('topic').filter(topic__code__icontains='chtg')
+    print(vars(news[0]))
+    context = {'news': news}
+    return render(request, 'website/qa.html', context)
         
 def service(request):
     return render(request, 'website/service.html')
@@ -59,19 +62,33 @@ def pricing(request):
     return render(request, 'website/pricing.html', context)
 
 def blog(request):
-    news = News.objects.all()[0:5]
-    # blog = News.objects.get(slug='bang-gia-dieu-tri')
-    context = {'news': news}
-    return render(request, 'website/blog.html', context)
+    # news = News.objects.all()[0:5]
+    # # blog = News.objects.get(slug='bang-gia-dieu-tri')
+    # context = {'news': news}
+    # return render(request, 'website/blog.html', context)
+    Allblog = News.objects.all().order_by('-id') [0:5]
+    blog = Allblog[0]
+    context = {'Allblogs': Allblog, 'blogs': blog}
+    return render(request, 'website/blog_details.html', context)
+
+# def blog_details(request):
+    
+#     Allblog = News.objects.all().order_by('-id') [0:5]
+#     blog = Allblog[0]
+#     context = {'Allblogs': Allblog, 'blogs': blog}
+    
+#     return render(request, 'website/blog_details.html', context)
 
 def blog_details(request, pk ):
     
     Allblog = News.objects.all() [0:5]
-    blog = News.objects.get(id=pk)
+    blog = News.objects.get(slug=pk)
     print(vars(blog))
     context = {'blogs': blog, 'Allblogs': Allblog}
     
     return render(request, 'website/blog_details.html', context)
+
+
 
 def contact(request):
     if request.method == 'POST':
