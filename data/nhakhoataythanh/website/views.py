@@ -10,14 +10,14 @@ import socket
 
 def home(request):
     if request.method == 'POST':
-        time = request.POST['home_time']
+        # time = request.POST['home_time']
         scheldule = request.POST['home_scheldule']
         address = request.POST['home_address']
         name = request.POST['home_name']
         phone = request.POST['home_phone']
         email = request.POST['home_email']
         message = request.POST['home_message']
-        home_text_all = 'Tên : '+name+'<br>Thời gian : '+time+'<br>Lịch : '+scheldule+'<br>Địa chỉ : '+address+'<br>Phone : '+phone+'<br>email : '+email+'<br>Nội dung : '+message
+        home_text_all = 'Tên : '+name+'<br>Lịch : '+scheldule+'<br>Địa chỉ : '+address+'<br>Phone : '+phone+'<br>email : '+email+'<br>Nội dung : '+message
         # socket.getaddrinfo('gmail.com', 80)
         # #send email to default address
         # send_mail(
