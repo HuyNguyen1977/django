@@ -1,12 +1,13 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Customer,Job, GroupUser, TienSuBenh, News, Topic, NewPhotos
+from .models import Customer,Job, GroupUser, TienSuBenh, News, Topic, NewPhotos, Datlichhen
 
 admin.site.register(Customer)
 admin.site.register(Job)
 admin.site.register(GroupUser)
 admin.site.register(TienSuBenh)
+admin.site.register(Datlichhen)
 
 admin.site.register(Topic)
 

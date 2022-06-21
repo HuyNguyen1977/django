@@ -41,6 +41,16 @@ class TienSuBenh(models.Model):
     def __str__(self):
         return self.name
 
+class Datlichhen(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.TextField(max_length=200, null=True)
+    phone = models.CharField(max_length=20, null=True)
+    address = models.TextField(max_length=200, null=True)
+    timeCare = models.CharField(max_length=200, null=True)
+    description = models.TextField(null=True)
+    def __str__(self):
+        return self.name
+
 class Customer(models.Model):
     id = models.AutoField(primary_key=True)
     code = models.CharField(max_length=200, null=True, unique=TRUE)

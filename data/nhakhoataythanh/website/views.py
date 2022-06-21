@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail as sm
 from django.conf import settings as conf_settings
+from django.db import connection, OperationalError
 
-from .models import News, Topic
+from .models import Datlichhen, News, Topic
 # from .models import Blogs
 import socket
 
@@ -11,13 +12,13 @@ import socket
 def home(request):
     if request.method == 'POST':
         # time = request.POST['home_time']
-        scheldule = request.POST['home_scheldule']
-        address = request.POST['home_address']
-        name = request.POST['home_name']
-        phone = request.POST['home_phone']
-        email = request.POST['home_email']
-        message = request.POST['home_message']
-        home_text_all = 'Tên : '+name+'<br>Lịch : '+scheldule+'<br>Địa chỉ : '+address+'<br>Phone : '+phone+'<br>email : '+email+'<br>Nội dung : '+message
+        rq_scheldule = request.POST['home_scheldule']
+        rq_address = request.POST['home_address']
+        rq_name = request.POST['home_name']
+        rq_phone = request.POST['home_phone']
+        rq_email = request.POST['home_email']
+        rq_message = request.POST['home_message']
+        # home_text_all = 'Tên : '+name+'<br>Lịch : '+scheldule+'<br>Địa chỉ : '+address+'<br>Phone : '+phone+'<br>email : '+email+'<br>Nội dung : '+message
         # socket.getaddrinfo('gmail.com', 80)
         # #send email to default address
         # send_mail(
@@ -27,14 +28,19 @@ def home(request):
         #     [conf_settings.CONTACT_US_FORM_EMAIL_TO],
         #     fail_silently=False,
         # )
-        res = sm(
-                subject = '[Khách hàng]Booking',
-                message = home_text_all,
-                from_email = email,
-                recipient_list = ['huynguyen@saigonbooks.vn'],
-                fail_silently=False,
-            )    
-        messages.success(request, f'Hi {name}, Thanks for contacting us. We will follow up with you within next few business days.')
+        # res = sm(
+        #         subject = '[Khách hàng]Booking',
+        #         message = home_text_all,
+        #         from_email = email,
+        #         recipient_list = ['huynguyen@saigonbooks.vn'],
+        #         fail_silently=False,
+        #     )
+        try:
+            datlichhen =  Datlichhen(name=rq_name,phone=rq_phone ,address=rq_address,timeCare=rq_scheldule,description=rq_message)
+            datlichhen.save()
+        except OperationalError:
+            print(connection.queries[-1])   
+        messages.success(request, f'Hi {rq_name}, Thanks for contacting us. We will follow up with you within next few business days.')
         return redirect('/')
     else:
         # news = News.objects.get(topic_id='1')[0:3]
@@ -92,9 +98,9 @@ def blog_details(request, pk ):
 
 def contact(request):
     if request.method == 'POST':
-        name = request.POST['message_name']
-        email = request.POST['message_email']
-        message = request.POST['message']
+        rq_name = request.POST['message_name']
+        # email = request.POST['message_email']
+        rq_message = request.POST['message']
         # socket.getaddrinfo('gmail.com', 80)
         # #send email to default address
         # send_mail(
@@ -104,14 +110,21 @@ def contact(request):
         #     [conf_settings.CONTACT_US_FORM_EMAIL_TO],
         #     fail_silently=False,
         # )
-        res = sm(
-                subject = '[Khách hàng]Liên hệ',
-                message = message,
-                from_email = email,
-                recipient_list = ['huynguyen@saigonbooks.vn'],
-                fail_silently=False,
-            )    
-        messages.success(request, f'Hi {name}, Thanks for contacting us. We will follow up with you within next few business days.')
+        # res = sm(
+        #         subject = '[Khách hàng]Liên hệ',
+        #         message = message,
+        #         from_email = email,
+        #         recipient_list = ['huynguyen@saigonbooks.vn'],
+        #         fail_silently=False,
+        #     )    
+        
+        try:
+            datlichhen =  Datlichhen(name=rq_name,description=rq_message)
+            datlichhen.save()
+        except OperationalError:
+            print(connection.queries[-1])   
+        
+        messages.success(request, f'Hi {rq_name}, Thanks for contacting us. We will follow up with you within next few business days.')
         return redirect('contact')
     else:
         return render(request, 'website/contact.html')
